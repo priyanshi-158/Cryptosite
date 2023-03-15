@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { Link, Switch } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider
+} from 'react-router-dom'
+import Cryptocurrencies from "./components/Cryptocurrencies";
+import Exchanges from "./components/Exchanges";
+import Homepage from "./components/Homepage";
+import Navbar from "./components/Navbar";
+import News from "./components/News";
+import CryptoDetails from "./components/CryptoDetails";
+import RootLayout from "./layout/RootLayout";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout />}>
+      <Route exact path="/" element={<Homepage/>}/>
+      <Route exact path="/cryptocurrencies" element={<Cryptocurrencies />}/>
+      <Route exact path="/crypto/:coinid" element={<CryptoDetails />}/>
+      <Route exact path="/exchanges" element={<Exchanges />}/>
+      <Route exact path="/news" element={<News/>}/> 
+    </Route>
+  )
+)
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <RouterProvider router={router}/>
   );
 }
 
