@@ -51,7 +51,7 @@ const CryptoDetails = () => {
     <select defaultValue='7d' onChange={(value)=>setTimePeriod(value)} className='w-52 p-2 mt-7 bg-zinc-50'>
       {time.map((date) => <option key={date}>{date}</option>)}
       </select>
-      <div className='flex justify-between gap-10 items-center'>
+      <div className='flex flex-col lg:flex-row justify-between gap-10 items-center'>
         <div>
           <div >
             <h3 className='font-bold mt-5 text-[#0071bd] text-xl'>{data?.data?.coin.name} Value Statistics</h3>
