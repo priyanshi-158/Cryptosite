@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Cryptosite-Get here all crypto-related information 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+A website that gives and updates it's users with the latest crypto stats to manage their cryptocurrecy portfolio. It also shows the latest and trending cryptocurrency news across the globe. The usage of React Javascript library makes it fast, efficient and user-friendly. The RapidAPI provides all the data and current news displayed on the site. 
 
 ## Available Scripts
 
