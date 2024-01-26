@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useParams } from 'react-router-dom'
 import millify from 'millify'
 import useFetch from './useFetch'
@@ -14,7 +14,6 @@ import exc from '../images/exc.svg'
 
 const CryptoDetails = () => {
   const {coinid}=useParams();
-  const [timePeriod, setTimePeriod]=useState('7d')
   const options = {
     method: 'GET',
     headers: {
@@ -23,8 +22,7 @@ const CryptoDetails = () => {
     }
   };
   const {data,loading,error }= useFetch(`https://coinranking1.p.rapidapi.com/coin/${coinid}?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=7d`,options)
-  const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
-
+  
   const stats = [
     { title: 'Price to USD', value: `$ ${data?.data?.coin?.price && millify(data?.data?.coin?.price)}`, icon: dollar },
     { title: 'Rank', value: data?.data?.coin?.rank, icon: rank },
@@ -43,15 +41,12 @@ const CryptoDetails = () => {
   if (loading) return ('Loading')
   return (
     <div className='m-7'>
-    <div className='flex justify-center items-center flex-col border-b border-solid border-[#d9d9d9] py-5 gap-2'>
+    <div className='flex justify-center items-center flex-col border-b border-solid border-[#d9d9d9] py-10 gap-2'>
       <h2 className='text-3xl font-bold text-blue-600'> {data?.data?.coin.name}</h2>
       <p>{data?.data?.coin.name}  live price in US Dollar (USD). View value statistics, market cap and supply.</p>
       
     </div>
-    <select defaultValue='7d' onChange={(value)=>setTimePeriod(value)} className='w-52 p-2 mt-7 bg-zinc-50'>
-      {time.map((date) => <option key={date}>{date}</option>)}
-      </select>
-      <div className='flex flex-col lg:flex-row justify-between gap-10 items-center'>
+      <div className='flex flex-col lg:flex-row justify-between gap-10 items-center pt-8'>
         <div>
           <div >
             <h3 className='font-bold mt-5 text-[#0071bd] text-xl'>{data?.data?.coin.name} Value Statistics</h3>

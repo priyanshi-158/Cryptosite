@@ -2,8 +2,6 @@ import React from 'react'
 import millify from 'millify'
 import { Link } from 'react-router-dom'
 import useFetch from './useFetch'
-import Cryptocurrencies from './Cryptocurrencies'
-import News from './News'
 import CryptoCard from './CryptoCard'
 import NewsCard from './NewsCard'
 const Homepage = () => {
@@ -21,16 +19,14 @@ const Homepage = () => {
         const options = {
             method: 'GET',
             headers: {
-              'X-BingApis-SDK': 'true',
-              'X-RapidAPI-Key': '3d2b753eccmsh04bf0b831f8b334p103038jsn609652e2e852',
-              'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
+                'X-RapidAPI-Key': '3d2b753eccmsh04bf0b831f8b334p103038jsn609652e2e852',
+                'X-RapidAPI-Host': 'cryptocurrency-news2.p.rapidapi.com'
             }
-          };
+        };
           const{data: news,loading:fetching,error:error1}=
-          useFetch('https://bing-news-search1.p.rapidapi.com/news/search?q=Cryptocurrency&freshness=Day&textFormat=Raw&safeSearch=Off',options)
+          useFetch('https://cryptocurrency-news2.p.rapidapi.com/v1/coindesk',options)
 
-          console.log(news)
-    if (loading|| fetching) return "Loading...";
+    if (loading || fetching) return "Loading...";
     else {
         return (
             <div className='ml-2'>
@@ -85,14 +81,15 @@ const Homepage = () => {
                         <CryptoCard currency={currency} key={currency.uuid} />
                     </Link>
                 ))}
-                <div className='flex  items-center mt-10'>
+                {news?.data?<div className='flex  items-center mt-10'>
                     <h2 className='text-2xl font-semibold py-3'>Latest Crypto News</h2>
                     <h3 className='right-0 text-blue-600 underline font-semibold absolute'><Link to='/news'>Show More</Link></h3>
-                </div>
-                {news?.value.slice(0,4).map((news,i)=>(
-                    <Link to={news.url}  className='m-3 hover:shadow-md flex flex-wrap'>
+                </div>:<></>}
+                
+                {news?.data?news?.data.slice(0,4).map((news,i)=>(
+                    <Link to={news.url}  className='m-3 hover:shadow-md bg-slate-100 flex flex-wrap'>
                         <NewsCard news={news} key={i}/>
-                    </Link> ))}
+                    </Link> )):<></>}
             </div>
         )
     }

@@ -1,4 +1,4 @@
-import { Link, Switch } from "react-router-dom";
+
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -6,9 +6,7 @@ import {
   RouterProvider
 } from 'react-router-dom'
 import Cryptocurrencies from "./components/Cryptocurrencies";
-import Exchanges from "./components/Exchanges";
 import Homepage from "./components/Homepage";
-import Navbar from "./components/Navbar";
 import News from "./components/News";
 import CryptoDetails from "./components/CryptoDetails";
 import RootLayout from "./layout/RootLayout";
@@ -19,7 +17,7 @@ const router = createBrowserRouter(
       <Route exact path="/" element={<Homepage/>}/>
       <Route exact path="/cryptocurrencies" element={<Cryptocurrencies />}/>
       <Route exact path="/crypto/:coinid" element={<CryptoDetails />}/>
-      <Route exact path="/exchanges" element={<Exchanges />}/>
+      {/* <Route exact path="/exchanges" element={<Exchanges />}/> */}
       <Route exact path="/news" element={<News/>}/> 
     </Route>
   )
