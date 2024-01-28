@@ -17,7 +17,6 @@ const router = createBrowserRouter(
       <Route exact path="/" element={<Homepage/>}/>
       <Route exact path="/cryptocurrencies" element={<Cryptocurrencies />}/>
       <Route exact path="/crypto/:coinid" element={<CryptoDetails />}/>
-      {/* <Route exact path="/exchanges" element={<Exchanges />}/> */}
       <Route exact path="/news" element={<News/>}/> 
     </Route>
   )
