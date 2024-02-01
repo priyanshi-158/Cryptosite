@@ -13,7 +13,7 @@ VS Code, git, Netlify
 
 
 
-Deployed Version: https://cryptosite-all-stats.netlify.app/
+Deployed Version: [Cryptosite](https://cryptosite-gamma.vercel.app/)
 
 ## Available Scripts
 
